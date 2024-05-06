@@ -3,28 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-
-
   </head>
   <body>
-		
-
 		<script>
-			const url = "https://id.google.com/";
+			const url = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5792821247447619";
 			fetch(url, {
 				method: "HEAD",
 				mode: "no-cors",
 				cache: "no-store",
 			})
-				.then(({ redirected }) => {
-					if (redirected) alert(1);
+				.then(({redirected}) => {
+					if (redirected) {
+						window.location.href = 'https://www.google.com';
+					}
 				})
-				.catch(() => {
-					alert(2);
-				});
-
-	</script>
-
+		</script>
   </body>
 </html>

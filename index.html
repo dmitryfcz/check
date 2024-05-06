@@ -11,41 +11,32 @@
     <div id="fab-enabled" style="display: none;">Реклама</div>
     <div id="fab-not-enabled" style="display: none;">Нет</div>
 		
-		
+		<script>var check = undefined, Check = undefined;</script>
+
+		<script type="text/javascript" src="./check.js" integrity="sha384-vmrf89W3zuYqkqnbA/PTj6JdRUdlShSCo/MHqVej0QoDnucC4ga9bFuW+Z64Um8W" crossorigin="anonymous"></script>
+
 		<script>
-			// Function called if AdBlock is not detected
-			function adBlockNotDetected() {
-				document.querySelector('#fab-enabled').style.display = 'none';
-				document.querySelector('#fab-not-enabled').style.display = 'block';
-			}
-			// Function called if AdBlock is detected
-			function adBlockDetected() {
+			var adBlockDetected = function() {
 				document.querySelector('#fab-enabled').style.display = 'block';
 				document.querySelector('#fab-not-enabled').style.display = 'none';
 			}
-	
-			// We look at whether BlockAdBlock already exists.
-			if(typeof blockAdBlock !== 'undefined' || typeof BlockAdBlock !== 'undefined') {
-				// If this is the case, it means that something tries to usurp are identity
-				// So, considering that it is a detection
-				adBlockDetected();
-			} else {
-				// Otherwise, you import the script BlockAdBlock
-				var importFAB = document.createElement('script');
-				importFAB.onload = function() {
-					// If all goes well, we configure BlockAdBlock
-					blockAdBlock.onDetected(adBlockDetected)
-					blockAdBlock.onNotDetected(adBlockNotDetected);
-				};
-				importFAB.onerror = function() {
-					// If the script does not load (blocked, integrity error, ...)
-					// Then a detection is triggered
-					adBlockDetected(); 
-				};
-				importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/blockadblock/3.2.1/blockadblock.min.js';
-				document.head.appendChild(importFAB);
+			var adBlockUndetected = function() {
+				document.querySelector('#fab-not-enabled').style.display = 'block';
+				document.querySelector('#fab-enabled').style.display = 'none';
 			}
-		</script>
+			if(typeof  Check === 'undefined') {
+					document.addEventListener("DOMContentLoaded", adBlockDetected);
+			} else {
+					check.on(true, adBlockDetected).on(false, adBlockUndetected);
+			}
+			// It removes the variable "fuckadblock" and "FuckAdBlock
+			// so that it not be exploited by another script later
+			// but beware, you can not use it too!
+			check = undefined;
+			
+			// Do not use FuckAdBlock outside this area
+			// (between importing the script and the line above)
+	</script>
 
   </body>
 </html>

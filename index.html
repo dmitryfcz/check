@@ -3,17 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="check.js"></script>
+		
+
+
+  </head>
+  <body>
+    <div id="fab-enabled" style="display: none;">Реклама</div>
+    <div id="fab-not-enabled" style="display: none;">Нет</div>
 		
 		
-		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+		<script>
 			// Function called if AdBlock is not detected
 			function adBlockNotDetected() {
-				alert('GOOD')
+				document.querySelector('#fab-enabled').style.display = 'none';
+				document.querySelector('#fab-not-enabled').style.display = 'block';
 			}
 			// Function called if AdBlock is detected
 			function adBlockDetected() {
-				alert('BAD')
+				document.querySelector('#fab-enabled').style.display = 'block';
+				document.querySelector('#fab-not-enabled').style.display = 'none';
 			}
 	
 			// We look at whether BlockAdBlock already exists.
@@ -34,16 +42,10 @@
 					// Then a detection is triggered
 					adBlockDetected(); 
 				};
-				importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
-				importFAB.crossOrigin = 'anonymous';
 				importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/blockadblock/3.2.1/blockadblock.min.js';
 				document.head.appendChild(importFAB);
 			}
 		</script>
 
-
-  </head>
-  <body>
-    <div class="title">Select what you are interested in</div>
   </body>
 </html>

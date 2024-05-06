@@ -3,48 +3,37 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script>var check = undefined;</script>
-    <script src="check.js"></script> -->
- 
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-format="fluid"
+     data-ad-layout="in-article"
+     data-ad-client="ca-pub-0123456789101112"
+     data-ad-slot="9876543210"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<script>
+			// Make sure that the properties exist on the window.
+			window.googlefc = window.googlefc || {};
+			window.googlefc.ccpa = window.googlefc.ccpa || {}
+			window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+		
+			console.log(googlefc);
+			// Queue the callback on the callbackQueue.
+			googlefc.callbackQueue.push({
+				'AD_BLOCK_DATA_READY':
+				() => {
+					if (googlefc.getAdBlockerStatus() == googlefc.AdBlockerStatusEnum.NO_AD_BLOCKER) {
+						console.log('here');
+					} else {
+						console.log('o');
+					}
+				}
+			});
+		</script>
   </head>
   <body>
-    <div>You have no adblock</div>
-
-    <script>
-
-      // Function called if AdBlock is not detected
-function adBlockNotDetected() {
-	alert('AdBlock is not enabled');
-}
-// Function called if AdBlock is detected
-function adBlockDetected() {
-	alert('AdBlock is enabled');
-}
-
-// We look at whether FuckAdBlock already exists.
-if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
-	// If this is the case, it means that something tries to usurp are identity
-	// So, considering that it is a detection
-	adBlockDetected();
-} else {
-	// Otherwise, you import the script FuckAdBlock
-	var importFAB = document.createElement('script');
-	importFAB.onload = function() {
-		// If all goes well, we configure FuckAdBlock
-		fuckAdBlock.onDetected(adBlockDetected)
-		fuckAdBlock.onNotDetected(adBlockNotDetected);
-	};
-	importFAB.onerror = function() {
-		// If the script does not load (blocked, integrity error, ...)
-		// Then a detection is triggered
-		adBlockDetected(); 
-	};
-	importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
-	importFAB.crossOrigin = 'anonymous';
-	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
-	document.head.appendChild(importFAB);
-}
-    </script>
-    
+    <div class="title">Select what you are interested in</div>
   </body>
 </html>

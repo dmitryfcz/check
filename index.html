@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>var check = undefined;</script>
+    <script src="check.js"></script>
+    <script>
+      function redirect() {
+        window.location.href = "https://google.com";
+      }
+      if(typeof  Check === 'undefined') {
+        document.addEventListener("DOMContentLoaded", redirect);
+      } else {
+          if(check) {
+            redirect()
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <div>You have no adblock</div>
+  </body>
+</html>

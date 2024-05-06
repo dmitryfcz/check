@@ -13,9 +13,10 @@
         document.addEventListener("DOMContentLoaded", redirect);
       } else {
           if(check) {
-            check.on(true, redirect);
+            check.on(true, redirect).on(false, () => console.log('false'));
           }
       }
+      console.log(check);
     </script>
   </head>
   <body>

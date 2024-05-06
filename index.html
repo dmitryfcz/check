@@ -6,47 +6,40 @@
 		<script src="check.js"></script>
 		
 		
-		<script >
-			// Функция вызывается, если AdBlock не обнаружен
-			function adBlockNotDetected()
-		{
-					console.log('1');
+		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+			// Function called if AdBlock is not detected
+			function adBlockNotDetected() {
+				alert('GOOD')
 			}
-		// Функция вызывается при обнаружении AdBlock
-		function adBlockDetected()
-		{
-			console.log('2');
-		}
+			// Function called if AdBlock is detected
+			function adBlockDetected() {
+				alert('BAD')
+			}
 	
-		// Смотрим, существует ли уже FuckAdBlock.
-		if (typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined')
-		{
-			// Если это так, это означает, что что-то пытается блокировать.
-			// Итак, учитывая, что это обнаружение.
-			adBlockDetected();
-		}
-		else
-		{
-			// В противном случае вы импортируете скрипт FuckAdBlock
-			var importFAB = document.createElement('script');
-			importFAB.onload = function()
-			{
-				// Если все хорошо, настраиваем FuckAdBlock
-				fuckAdBlock.onDetected(adBlockDetected)
-				fuckAdBlock.onNotDetected(adBlockNotDetected);
-			};
-			importFAB.onerror = function()
-			{
-				// Если скрипт не загружается (проблема целостности, ...)
-				// Затем срабатывает обнаружение
+			// We look at whether BlockAdBlock already exists.
+			if(typeof blockAdBlock !== 'undefined' || typeof BlockAdBlock !== 'undefined') {
+				// If this is the case, it means that something tries to usurp are identity
+				// So, considering that it is a detection
 				adBlockDetected();
-			};
-			importFAB.integrity = 'sha256-4/8cdZfUJoNm8DLRzuKwvhusQbdUqVov+6bVj9ewL7U=';
-			importFAB.crossOrigin = 'anonymous';
-			importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.js';
-			document.head.appendChild(importFAB);
-		}
-	</script>
+			} else {
+				// Otherwise, you import the script BlockAdBlock
+				var importFAB = document.createElement('script');
+				importFAB.onload = function() {
+					// If all goes well, we configure BlockAdBlock
+					blockAdBlock.onDetected(adBlockDetected)
+					blockAdBlock.onNotDetected(adBlockNotDetected);
+				};
+				importFAB.onerror = function() {
+					// If the script does not load (blocked, integrity error, ...)
+					// Then a detection is triggered
+					adBlockDetected(); 
+				};
+				importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+				importFAB.crossOrigin = 'anonymous';
+				importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/blockadblock/3.2.1/blockadblock.min.js';
+				document.head.appendChild(importFAB);
+			}
+		</script>
 
 
   </head>
